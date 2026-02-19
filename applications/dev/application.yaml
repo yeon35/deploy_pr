@@ -2,19 +2,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-bluegreen-demo
-  namespace: argocd
+  namespace: demo
 spec:
   project: default
   source:
     repoURL: https://github.com/yeon35/deploy_pr.git
     targetRevision: main   # 예: test-cd / main / develop
-    path: manifests/demo-bluegreen
+    path: manifest/demo-bluegreen
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: false
     syncOptions:
       - CreateNamespace=true
