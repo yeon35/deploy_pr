@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: <YOUR_GIT_REPO_URL>
-    targetRevision: <BRANCH_OR_TAG>   # 예: test-cd / main / develop
+    repoURL: https://github.com/yeon35/deploy_pr.git
+    targetRevision: main   # 예: test-cd / main / develop
     path: manifests/demo-bluegreen
   destination:
     server: https://kubernetes.default.svc

@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: popcorn-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/yeon35/deploy_pr.git
+    targetRevision: main  # 예: main, prod, v1.0.3
+    path: manifests/prod                        # 네 prod 매니페스트 경로
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: popcorn-prod
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
